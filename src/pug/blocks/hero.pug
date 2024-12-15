@@ -23,29 +23,25 @@ include ../templates/mixins/m-input
 			mod: 'hero__pic--pos_1_mod',
 			img: 'hero/1.png',
 			img_mob: 'hero/1_mob.png',
-			alt: 'Bomb',
-			lazy: false
+			alt: 'Bomb'
 		},
 		{
 			mod: 'hero__pic--pos_2_mod',
 			img: 'hero/2.png',
 			img_mob: 'hero/2_mob.png',
-			alt: 'Shipc',
-			lazy: false
+			alt: 'Shipc'
 		},
 		{
 			mod: 'hero__pic--pos_3_mod',
 			img: 'hero/3.png',
 			img_mob: 'hero/3_mob.png',
-			alt: 'Grenade',
-			lazy: false
+			alt: 'Grenade'
 		},
 		{
 			mod: 'hero__pic--pos_4_mod',
 			img: 'hero/4.png',
 			img_mob: 'hero/4_mob.png',
-			alt: 'Knife',
-			lazy: false
+			alt: 'Knife'
 		},
 	]
 
@@ -75,6 +71,7 @@ section.section.hero.js-parallax-section
 						media: 480,
 						class: `hero__pic ${pic.mod}`,
 						img_class: 'hero__img js-parallax-el',
+						lazy: false,
 						...pic
 					})
 
