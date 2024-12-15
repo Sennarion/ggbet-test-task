@@ -38,6 +38,7 @@ const mobileSlider = () => {
 				modules: [Pagination, Navigation],
 				speed: 800,
 				spaceBetween: 40,
+				slidesPerView: 1,
 				loop: true,
 				pagination: {
 					el: $pagination,
@@ -47,14 +48,6 @@ const mobileSlider = () => {
 				navigation: {
 					prevEl: $prevBtn,
 					nextEl: $nextBtn,
-				},
-				breakpoints: {
-					480: {
-						slidesPerView: 1,
-					},
-					768: {
-						slidesPerView: 2,
-					},
 				},
 				on: {
 					init: () => {
