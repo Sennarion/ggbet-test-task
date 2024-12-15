@@ -3,7 +3,7 @@ import { exist, onWindowResize, getWindowSize, BREAKPOINTS } from '../utils';
 const header = () => {
 	const SELECTORS = {
 		header: '.js-header',
-		menuTrigger: '.js-header-menu-btn',
+		menuTrigger: '.js-header-menu-trigger',
 	};
 
 	const CLASSNAMES = {
@@ -12,15 +12,15 @@ const header = () => {
 
 	const { body } = document;
 	const $header = document.querySelector(SELECTORS.header);
-	const $menuTriggers = $header.querySelectorAll(SELECTORS.menuTrigger);
+	const $menuTrigger = $header.querySelector(SELECTORS.menuTrigger);
 
-	if (!exist($header) || !exist($menuTriggers)) return;
+	if (!exist($header) || !exist($menuTrigger)) return;
 
 	let isMenuOpen = false;
 
-	const openMenu = () => {
-		body.classList.add(CLASSNAMES.bodyOpenMenuState);
-		isMenuOpen = true;
+	const toggleMenu = () => {
+		body.classList.toggle(CLASSNAMES.bodyOpenMenuState);
+		isMenuOpen = !isMenuOpen;
 	};
 
 	const closeMenu = () => {
@@ -28,17 +28,7 @@ const header = () => {
 		isMenuOpen = false;
 	};
 
-	const handleTriggerClick = (open) => {
-		if (!isMenuOpen && open) {
-			openMenu();
-		} else {
-			closeMenu();
-		}
-	};
-
-	$menuTriggers.forEach(($trigger) => {
-		$trigger.addEventListener('click', handleTriggerClick);
-	});
+	$menuTrigger.addEventListener('click', toggleMenu);
 
 	onWindowResize(() => {
 		const { windowWidth } = getWindowSize();

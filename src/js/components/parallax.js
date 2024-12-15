@@ -58,7 +58,7 @@ const parallax = () => {
 
 		return () => {
 			trigger.kill();
-			document.removeEventListener('pointermove', handleMouseMove);
+			removeMouseMoveEvent();
 		};
 	});
 };
