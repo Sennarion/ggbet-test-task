@@ -1,5 +1,4 @@
-/* eslint-disable consistent-return */
-import { exist } from '../utils';
+import { exist, onWindowResize, getWindowSize, BREAKPOINTS } from '../utils';
 
 const header = () => {
 	const SELECTORS = {
@@ -19,18 +18,34 @@ const header = () => {
 
 	let isMenuOpen = false;
 
+	const openMenu = () => {
+		body.classList.add(CLASSNAMES.bodyOpenMenuState);
+		isMenuOpen = true;
+	};
+
+	const closeMenu = () => {
+		body.classList.remove(CLASSNAMES.bodyOpenMenuState);
+		isMenuOpen = false;
+	};
+
 	const handleTriggerClick = (open) => {
 		if (!isMenuOpen && open) {
-			body.classList.add(CLASSNAMES.bodyOpenMenuState);
-			isMenuOpen = true;
+			openMenu();
 		} else {
-			body.classList.remove(CLASSNAMES.bodyOpenMenuState);
-			isMenuOpen = false;
+			closeMenu();
 		}
 	};
 
 	$menuTriggers.forEach(($trigger) => {
 		$trigger.addEventListener('click', handleTriggerClick);
+	});
+
+	onWindowResize(() => {
+		const { windowWidth } = getWindowSize();
+
+		if (windowWidth >= BREAKPOINTS.mediaPoint1) {
+			closeMenu();
+		}
 	});
 };
 
