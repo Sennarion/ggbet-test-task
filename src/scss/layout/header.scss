@@ -1,0 +1,238 @@
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: var(--height-header);
+
+	border-bottom: 1px solid $dark;
+
+	@include z_index(header);
+
+	@include bp($point_2, min) {
+		padding: 2.4rem var(--gl-hr-indent);
+
+		background-color: rgba($black, 0.6);
+		backdrop-filter: blur(0.8rem);
+	}
+
+	@include bp($point_3) {
+		padding: 2.4rem;
+
+		background-color: $black;
+	}
+}
+
+.header__content {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+	gap: 3.2rem;
+	width: 100%;
+}
+
+.header__logo {
+	flex-shrink: 0;
+	display: block;
+	aspect-ratio: 204/40;
+
+	@include bp($point_2, min) {
+		width: 20.4rem;
+	}
+
+	@include bp($point_3) {
+		width: 12rem;
+	}
+}
+
+.header__logo_img {
+	@include contain_img;
+}
+
+.header__nav {
+	@include bp($point_2, min) {
+		margin-left: auto;
+	}
+
+	@include bp($point_3) {
+		position: fixed;
+		top: var(--height-header);
+		left: 0;
+
+		width: 100%;
+		height: calc(100vh - var(--height-header));
+		padding: 3.2rem 0;
+
+		overflow-x: hidden;
+		overflow-y: auto;
+
+		background-color: $black;
+		transition: transform 0.3s ease;
+		will-change: transform;
+
+		&:not(.body--open_menu_state &) {
+			transform: translateX(-100%);
+		}
+	}
+}
+
+.header__nav_list {
+	position: relative;
+
+	@include bp($point_2, min) {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 2rem 4rem;
+	}
+
+	&:not(:last-child) {
+		@include bp($point_3) {
+			margin-bottom: 1.6rem;
+		}
+	}
+}
+
+.header__nav_item {
+	@include bp($point_3) {
+		width: 100%;
+	}
+}
+
+.header__nav_link {
+	@include text_alt;
+
+	display: block;
+	width: 100%;
+
+	color: $white;
+
+	transition: color $base_transition;
+
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		color: $orange;
+	}
+
+	@include bp($point_3) {
+		padding: 1.8rem;
+		text-align: center;
+	}
+}
+
+.header__btn {
+	display: block;
+	width: fit-content;
+	padding: 1.2rem 3.2rem;
+
+	font-size: 1.6rem;
+	line-height: 1;
+	font-weight: 600;
+	text-align: center;
+	color: $white;
+
+	background-color: $orange;
+	border-radius: 4rem;
+	transition: color $base_transition, background-color $base_transition;
+
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		color: $orange;
+
+		background-color: $white;
+	}
+
+	@include bp($point_2, min) {
+		margin-left: auto;
+	}
+
+	@include bp($point_3) {
+		margin: 0 auto;
+	}
+
+	&.header__btn--mobile_mod {
+		@include bp($point_2, min) {
+			display: none;
+		}
+	}
+
+	&.header__btn--desktop_mod {
+		@include bp($point_3) {
+			display: none;
+		}
+	}
+}
+
+.header__menu_btn {
+	$burgerHeight: 1.4rem;
+
+	position: relative;
+	z-index: 5;
+	display: block;
+	width: 2rem;
+	margin-left: auto;
+	margin-right: 0.5rem;
+	height: $burgerHeight;
+
+	cursor: pointer;
+
+	@include bp($point_2, min) {
+		display: none;
+	}
+
+	&::before,
+	&::after,
+	span {
+		position: absolute;
+		left: 0;
+		top: 50%;
+
+		width: 100%;
+		height: 2px;
+
+		background-color: $white;
+		border-radius: 2px;
+
+		transition: background-color $base_transition, transform $base_transition;
+		will-change: transform;
+	}
+
+	&::before {
+		transform: translateY(calc($burgerHeight / 2 * -1));
+		content: '';
+	}
+
+	&::after {
+		transform: translateY(calc($burgerHeight / 2));
+		content: '';
+	}
+
+	&:hover::before,
+	&:focus::before,
+	&:hover::after,
+	&:focus::after,
+	&:hover span,
+	&:focus span {
+		background-color: $orange;
+	}
+
+	.body--open_menu_state & {
+		span {
+			transform: scale(0);
+		}
+
+		&::before {
+			transform: rotate(-45deg);
+		}
+
+		&::after {
+			transform: rotate(45deg);
+		}
+	}
+}

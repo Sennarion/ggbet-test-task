@@ -1,0 +1,81 @@
+include ../templates/mixins/m-button
+include ../templates/mixins/m-input
+
+-
+	decors = [
+		{
+			mod: 'hero__decor--pos_1_mod',
+			src: './images/decors/1.svg'
+		},
+		{
+			mod: 'hero__decor--pos_2_mod',
+			src: './images/decors/2.svg'
+		},
+		{
+			mod: 'hero__decor--pos_3_mod',
+			src: './images/decors/3.svg'
+		},
+	]
+
+-
+	pictures = [
+		{
+			mod: 'hero__pic--pos_1_mod',
+			img: 'hero/1.png',
+			img_mob: 'hero/1_mob.png',
+			alt: 'Bomb',
+			lazy: false
+		},
+		{
+			mod: 'hero__pic--pos_2_mod',
+			img: 'hero/2.png',
+			img_mob: 'hero/2_mob.png',
+			alt: 'Shipc',
+			lazy: false
+		},
+		{
+			mod: 'hero__pic--pos_3_mod',
+			img: 'hero/3.png',
+			img_mob: 'hero/3_mob.png',
+			alt: 'Grenade',
+			lazy: false
+		},
+		{
+			mod: 'hero__pic--pos_4_mod',
+			img: 'hero/4.png',
+			img_mob: 'hero/4_mob.png',
+			alt: 'Knife',
+			lazy: false
+		},
+	]
+
+section.section.hero.js-parallax-section
+	.container
+		each decor in decors
+			.hero__decor(class=decor.mod)
+				img.hero__decor_img(src=decor.src alt='GG.BET decoration')
+		.hero__content
+			.hero__info
+				h1.hero__title #[span Download luck] play with GGBET!
+				form.hero__form(action='#')
+					+input({
+						required: true,
+						type: 'email',
+						placeholder: 'Email',
+						id: 'email',
+						icon: 'mail'
+					})
+					+button({
+						type: 'submit',
+						text: 'Subscribe'
+					})
+			.hero__pics
+				each pic in pictures
+					+picture({
+						media: 480,
+						class: `hero__pic ${pic.mod}`,
+						img_class: 'hero__img js-parallax-el',
+						...pic
+					})
+
+

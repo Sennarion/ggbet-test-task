@@ -1,0 +1,65 @@
+mixin head(array)
+	meta(charset='UTF-8')
+	title!= environment === 'development' ? `${environment} | ${array.title_inner}` : array.title_inner
+	meta(
+		name="description"
+		content="Download luck. Play with GGBET!"
+	)
+	meta(
+		name='viewport'
+		content='width=device-width, initial-scale=1, maximum-scale=5'
+	)
+	link(
+		rel='shortcut icon',
+		href=`${assetsImage}favicon.ico`
+	)
+
+mixin icon(name, mod)
+	- mod = mod || '';
+	svg(class=`icon icon_${name} ${mod}`)
+		use(xlink:href=`${assetsImage}sprite/sprite.svg#${name}`)
+
+mixin picture(data)
+	- imagesArray = data.img_mob ? [data.img, data.img_mob] : [data.img];
+	- dedicatedPaths = imagesArray.map((path) => path.split('.'));
+	- typesArray = dedicatedPaths.map((path) => [path.pop()]);
+	- pathArray = dedicatedPaths.map((path) => assetsImage + path.join('.'));
+
+	- is2x = data.is2x ? true : false;
+	- media = data.media;
+	- alt = data.alt || 'some image';
+	- loading = (data.lazy === false || data.jsLazy === true) ? 'eager' : 'lazy';
+	- jsLazy = data.jsLazy;
+
+	picture(class=data.class)
+		each type, i in typesArray
+			if (global.environment === 'production' || environment === 'production' || global.environment === 'preview' || environment === 'preview')
+				- type.unshift('webp');
+				- defaultTypeIndex = 1;
+			else
+				- defaultTypeIndex = 0;
+
+			each subType, j in type
+				- mimeType = subType === 'jpg' ? 'jpeg' : subType;
+				- isWebp = subType === 'webp' ? '.webp' : '';
+
+				if media
+					- mediaAttr = i === 0 ? `(min-width: ${media}px)` : `(max-width: ${media - 1}px)`;
+
+				- srcSet = `${pathArray[i]}.${type[defaultTypeIndex]}${isWebp}${is2x ? `, ${pathArray[i]}@2x.${type[defaultTypeIndex]}${isWebp} 2x` : ''}`
+
+				source(
+					media=mediaAttr,
+					srcset=jsLazy ? undefined : srcSet,
+					data-srcset=jsLazy ? srcSet : undefined
+					type=`image/${mimeType}`
+				)
+		- source = `${pathArray[0]}.${typesArray[0][defaultTypeIndex]}`
+		img(
+			class=data.img_class,
+			src=jsLazy ? undefined : source,
+			data-src=jsLazy ? source : undefined
+			alt=alt,
+			loading=loading
+		)
+

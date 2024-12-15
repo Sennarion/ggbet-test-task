@@ -1,0 +1,276 @@
+.hero {
+	@include bp($point_2, min) {
+		padding: 7.4rem var(--gl-hr-indent);
+	}
+
+	@include bp($point_3) {
+		padding: 4rem var(--gl-hr-indent);
+	}
+
+	&::before,
+	&::after {
+		position: absolute;
+		content: '';
+		top: 50%;
+		left: 50%;
+		z-index: -1;
+
+		transform: translate(-50%, -50%);
+		background: radial-gradient(50% 50% at 50% 50%, $orange_2 0%, rgba($orange_2, 0) 100%);
+		pointer-events: none;
+
+		@include bp($point_2, min) {
+			width: 100rem;
+			aspect-ratio: 1;
+
+			border-radius: 50%;
+			filter: blur(15rem);
+		}
+
+		@include bp($point_3) {
+			width: 83.4%;
+			aspect-ratio: 3/5;
+
+			border-radius: 50rem;
+			filter: blur(5.4rem);
+		}
+	}
+
+	&::before {
+		@include bp($point_2, min) {
+			margin: 29rem 0 0 -56rem;
+		}
+
+		@include bp($point_3) {
+			margin: -23% 0 0 -50%;
+		}
+	}
+
+	&::after {
+		@include bp($point_2, min) {
+			margin: -28rem 0 0 56rem;
+		}
+
+		@include bp($point_3) {
+			margin: -70% 0 0 50%;
+		}
+	}
+}
+
+.hero__decor {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: -1;
+
+	transform: translate(-50%, -50%);
+
+	&.hero__decor--pos_1_mod {
+		aspect-ratio: 65/126;
+
+		@include bp($point_2, min) {
+			width: 6.5rem;
+			margin: -15.2rem 0 0 -65.2rem;
+		}
+
+		@include bp($point_3) {
+			width: 3.4rem;
+			margin: max(-55%, -19.8rem) 0 0 min(36.4%, 18.2rem);
+
+			transform: rotate(180deg);
+		}
+	}
+
+	&.hero__decor--pos_2_mod {
+		aspect-ratio: 131/26;
+
+		@include bp($point_2, min) {
+			width: 13.2rem;
+			margin: 28rem 0 0 5.8rem;
+		}
+
+		@include bp($point_3) {
+			width: 6.4rem;
+			margin: max(-28.2%, -10.2rem) 0 0 max(-43%, -20.4rem);
+
+			transform: rotate(90deg);
+		}
+	}
+
+	&.hero__decor--pos_3_mod {
+		aspect-ratio: 174/110;
+
+		@include bp($point_2, min) {
+			width: 17.4rem;
+			margin: 17.4rem 0 0 64rem;
+		}
+
+		@include bp($point_3) {
+			display: none;
+		}
+	}
+}
+
+.hero__decor_img {
+	@include contain_img;
+}
+
+.hero__content {
+	display: flex;
+
+	@include bp($point_2, min) {
+		gap: 6rem;
+	}
+
+	@include bp($point_3) {
+		flex-direction: column;
+		gap: 4rem;
+		max-width: 43rem;
+		margin: 0 auto;
+	}
+}
+
+.hero__info {
+	@include bp($point_2, min) {
+		max-width: 43rem;
+		flex-shrink: 0;
+	}
+
+	@include bp($point_3) {
+		width: 100%;
+		order: 2;
+	}
+}
+
+.hero__title {
+	@include h1;
+
+	font-family: $font_2;
+	line-height: 0.92;
+
+	text-transform: uppercase;
+
+	@include bp($point_2, min) {
+		letter-spacing: -0.016em;
+	}
+
+	@include bp($point_3) {
+		letter-spacing: -0.02em;
+	}
+
+	&:not(:last-child) {
+		@include bp($point_2, min) {
+			margin-bottom: 7.2rem;
+		}
+
+		@include bp($point_3) {
+			margin-bottom: 4rem;
+		}
+	}
+
+	span {
+		@include h2;
+
+		display: inline-flex;
+		margin-right: -0.6rem;
+		line-height: 1;
+
+		background: linear-gradient(180deg, $orange_2 0%, $orange_2 30%, $white 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+
+		@include bp($point_2, min) {
+			letter-spacing: -0.016em;
+		}
+
+		@include bp($point_3) {
+			letter-spacing: -0.02em;
+		}
+	}
+}
+
+.hero__pics {
+	position: relative;
+
+	@include bp($point_2, min) {
+		flex-grow: 1;
+	}
+
+	@include bp($point_3) {
+		width: 100%;
+		order: 1;
+		aspect-ratio: 320/281;
+	}
+}
+
+.hero__pic {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	display: block;
+
+	transform: translate(-50%, -50%);
+
+	&.hero__pic--pos_1_mod {
+		aspect-ratio: 384/388;
+
+		@include bp($point_2, min) {
+			width: 38.4rem;
+			margin: -10.2rem 0 0 5rem;
+		}
+
+		@include bp($point_3) {
+			width: 66.6%;
+			margin: -12% 0 0 5%;
+		}
+	}
+
+	&.hero__pic--pos_2_mod {
+		aspect-ratio: 182/98;
+
+		@include bp($point_2, min) {
+			width: 18.2rem;
+			margin: -13.4rem 0 0 24rem;
+		}
+
+		@include bp($point_3) {
+			width: 32%;
+			margin: -17% 0 0 38%;
+		}
+	}
+
+	&.hero__pic--pos_3_mod {
+		aspect-ratio: 184/174;
+
+		@include bp($point_2, min) {
+			width: 18.4rem;
+			margin: -14.8rem 0 0 -19.4rem;
+		}
+
+		@include bp($point_3) {
+			width: 31.6%;
+			margin: -20% 0 0 -37%;
+		}
+	}
+
+	&.hero__pic--pos_4_mod {
+		aspect-ratio: 346/229;
+
+		@include bp($point_2, min) {
+			width: 34.6rem;
+			margin: 13rem 0 0 4rem;
+		}
+
+		@include bp($point_3) {
+			width: 60%;
+			margin: 28.4% 0 0 3.2%;
+		}
+	}
+}
+
+.hero__img {
+	@include contain_img;
+
+	will-change: transform;
+}

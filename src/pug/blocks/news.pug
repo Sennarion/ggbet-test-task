@@ -1,0 +1,32 @@
+include ../templates/mixins/m-article
+
+-
+	news = [
+		{
+			href: '#',
+			title: 'Triple bonus on PGL Major quals cs',
+			text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since typesetting industry. Lorem Ipsum is simply dummy text of the printing",
+			img: 'news/1.jpg',
+			img_mob: 'news/1_mob.jpg',
+		},
+		{
+			href: '#',
+			title: 'Triple bonus on PGL Major quals cs',
+			text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since typesetting industry. Lorem Ipsum is simply dummy text of the printing",
+			img: 'news/2.jpg',
+			img_mob: 'news/2_mob.jpg',
+		},
+	]
+
+section.section.news
+	.container
+		.news__slider.js-mobile-slider-wrapper
+			.news__list.js-mobile-slider
+				each article in news
+					.news__item
+						+article(article)
+			.news__slider_controls
+				button.news__slider_btn.news__slider_btn--prev_mod.js-mobile-slider-prev(type='button' aria-label='Previous slide')
+				.news__slider_pagination.js-mobile-slider-pagination
+				button.news__slider_btn.news__slider_btn--next_mod.js-mobile-slider-next(type='button' aria-label='Next slide')
+

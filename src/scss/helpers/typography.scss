@@ -1,0 +1,70 @@
+@mixin h1 {
+	font-weight: 700;
+
+	@include bp($point_2, min) {
+		font-size: 7.2rem;
+	}
+
+	@include bp($point_3) {
+		font-size: 5rem;
+	}
+}
+
+@mixin h2 {
+	font-weight: 700;
+
+	@include bp($point_2, min) {
+		font-size: 4.5rem;
+	}
+
+	@include bp($point_3) {
+		font-size: 3.2rem;
+	}
+}
+
+@mixin h3 {
+	font-size: 3.6rem;
+	font-weight: 700;
+}
+
+@mixin h4 {
+	font-size: 2.8rem;
+}
+
+@mixin h5 {
+	font-size: 2.4rem;
+}
+
+@mixin h6 {
+	font-size: 2rem;
+}
+
+@mixin text {
+	@include bp($point_2, min) {
+		font-size: 2.4rem;
+	}
+
+	@include bp($point_3) {
+		font-size: 1.8rem;
+	}
+}
+
+@mixin text_alt {
+	@include bp($point_2, min) {
+		font-size: 1.6rem;
+	}
+
+	@include bp($point_3) {
+		font-size: 1.8rem;
+	}
+}
+
+@mixin text_sm {
+	@include bp($point_2, min) {
+		font-size: 0.9rem;
+	}
+
+	@include bp($point_3) {
+		font-size: 1rem;
+	}
+}

@@ -1,0 +1,100 @@
+.news {
+	@include bp($point_2, min) {
+		padding: 10rem var(--gl-hr-indent) 1.6rem;
+	}
+
+	@include bp($point_3) {
+		padding: 3.6rem var(--gl-hr-indent);
+	}
+}
+
+.news__list {
+	@include bp($point_4, min) {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: auto;
+		gap: 8rem 4rem;
+	}
+
+	&:not(:last-child) {
+		margin-bottom: 3rem;
+	}
+
+	&.swiper {
+		overflow: visible;
+	}
+}
+
+.news__item {
+	@include bp($point_4, min) {
+		display: grid;
+		grid-template-rows: subgrid;
+		grid-row: span 4;
+		gap: 0;
+	}
+}
+
+.news__slider_controls {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+
+	@include bp($point_4, min) {
+		display: none;
+	}
+}
+
+.news__slider_btn {
+	display: block;
+	width: 1.7rem;
+	height: 3rem;
+
+	-webkit-clip-path: path('M12.75 30H17V0H12.75L0 12.5581V17.4419L12.75 30Z');
+	clip-path: path('M12.75 30H17V0H12.75L0 12.5581V17.4419L12.75 30Z');
+
+	background-color: $orange_2;
+	transition: background-color $base_transition;
+	cursor: pointer;
+
+	&:hover,
+	&:focus {
+		background-color: $white;
+	}
+
+	&.news__slider_btn--next_mod {
+		transform: rotate(180deg);
+	}
+
+	&.swiper-button-lock {
+		display: none;
+	}
+}
+
+.news__slider_pagination {
+	display: flex;
+	gap: 2rem;
+
+	&.swiper-pagination-lock {
+		display: none;
+	}
+
+	.swiper-pagination-bullet {
+		display: block;
+		width: 0.8rem;
+		height: 0.8rem;
+
+		background-color: $orange_2;
+		transition: background-color $base_transition;
+		cursor: pointer;
+
+		&.swiper-pagination-bullet-active {
+			background-color: $white;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: $white;
+		}
+	}
+}
