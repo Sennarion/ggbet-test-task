@@ -21,10 +21,9 @@ include ../templates/mixins/m-article
 section.section.news
 	.container
 		.news__slider.js-mobile-slider-wrapper
-			.news__list.js-mobile-slider
+			.news__slider_list.js-mobile-slider
 				each article in news
-					.news__item
-						+article(article)
+					+article(article)
 			.news__slider_controls
 				button.news__slider_btn.news__slider_btn--prev_mod.js-mobile-slider-prev(type='button' aria-label='Previous slide')
 				.news__slider_pagination.js-mobile-slider-pagination

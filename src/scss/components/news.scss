@@ -8,7 +8,7 @@
 	}
 }
 
-.news__list {
+.news__slider_list {
 	@include bp($point_4, min) {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
@@ -22,15 +22,6 @@
 
 	&.swiper {
 		overflow: visible;
-	}
-}
-
-.news__item {
-	@include bp($point_4, min) {
-		display: grid;
-		grid-template-rows: subgrid;
-		grid-row: span 4;
-		gap: 0;
 	}
 }
 
