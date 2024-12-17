@@ -116,7 +116,7 @@
 	&:hover,
 	&:focus {
 		text-decoration: none;
-		color: $orange;
+		color: $orange_4;
 	}
 
 	@include bp($point_3) {
@@ -136,14 +136,14 @@
 	text-align: center;
 	color: $white;
 
-	background-color: $orange;
+	background-color: $orange_4;
 	border-radius: 4rem;
 	transition: color $base_transition, background-color $base_transition;
 
 	&:hover,
 	&:focus {
 		text-decoration: none;
-		color: $orange;
+		color: $orange_4;
 
 		background-color: $white;
 	}
@@ -219,7 +219,7 @@
 	&:focus::after,
 	&:hover span,
 	&:focus span {
-		background-color: $orange;
+		background-color: $orange_4;
 	}
 
 	.body--open_menu_state & {
